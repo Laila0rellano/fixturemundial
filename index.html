@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mundial 2026 · Fixture familiar</title>
+<meta name="description" content="Fixture interactivo del Mundial 2026 para completar resultados en familia.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="tristripe"></div>
+
+<header class="hero">
+  <p class="hero-eyebrow">Fixture Web</p>
+  <h1>Mundial 2026</h1>
+  <p class="subtitle">Canadá · México · Estados Unidos — 48 selecciones, 12 grupos y un solo objetivo. Completá los resultados a medida que se juegan los partidos.</p>
+  <div class="hosts">
+    <span class="host-chip"><b>11 jun</b> — inicio</span>
+    <span class="host-chip"><b>19 jul</b> — final, East Rutherford</span>
+    <span class="host-chip">104 partidos</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-group">
+    <button class="tab-btn active" data-view="view-groups">Fase de grupos</button>
+    <button class="tab-btn" data-view="view-knockout">Eliminación directa</button>
+  </div>
+  <div class="tabs-actions">
+    <button class="icon-btn" id="btn-export" title="Descargar tus resultados como archivo">Exportar</button>
+    <label class="icon-btn" for="file-import" style="cursor:pointer;">Importar
+      <input type="file" id="file-import" accept="application/json" style="display:none;">
+    </label>
+    <button class="icon-btn" id="btn-reset" title="Borrar todo lo guardado en este dispositivo">Reiniciar</button>
+  </div>
+</nav>
+
+<main>
+
+  <section id="view-groups" class="view active">
+    <div class="section-head">
+      <h2>Fase de grupos</h2>
+      <p>Tocá los casilleros de cada partido para anotar el resultado. La tabla se actualiza sola.</p>
+    </div>
+    <div id="group-grid" class="group-grid"></div>
+  </section>
+
+  <section id="view-knockout" class="view">
+    <div class="section-head">
+      <h2>Eliminación directa</h2>
+      <p>Escribí los equipos clasificados y los resultados. El ganador avanza solo a la siguiente ronda.</p>
+    </div>
+    <div class="bracket-note">
+      Este cruce es un esquema libre para jugar en familia, no el bracket oficial de FIFA
+      (ese depende de qué selecciones terminan como "mejores terceros"). Usá el botón para
+      cargar automáticamente los 1° y 2° de cada grupo, y completá manualmente los 4 lugares
+      que quedan libres para los mejores terceros a medida que se confirmen.
+      <div style="margin-top:10px;">
+        <button class="icon-btn" id="btn-load-qualifiers">Cargar clasificados de grupos</button>
+      </div>
+    </div>
+    <div id="bracket-wrap" class="bracket-wrap"></div>
+    <div id="champion-banner" class="champion-banner"></div>
+  </section>
+
+</main>
+
+<footer>
+  Hecho con amor por Veri 
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
