@@ -261,8 +261,22 @@ function renderKnockout(){
     inp.addEventListener('input', (e)=>{
       const {match, field} = e.target.dataset;
       koSet(match, field, e.target.value);
+
+      if(field === 'teamA' || field === 'teamB'){
+        // solo guardamos: no hace falta redibujar todo el bracket mientras se escribe
+        // un nombre, así el campo no pierde el foco (y no se cierra el teclado en el celu)
+        return;
+      }
+
+      // los puntajes sí necesitan recalcular ganador y propagar a la siguiente ronda
+      const selStart = e.target.selectionStart;
       propagateWinners();
       renderKnockout();
+      const restored = wrap.querySelector(`input[data-match="${match}"][data-field="${field}"]`);
+      if(restored){
+        restored.focus();
+        try{ restored.setSelectionRange(selStart, selStart); }catch(_){}
+      }
     });
   });
 
